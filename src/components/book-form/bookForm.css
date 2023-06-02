@@ -1,0 +1,66 @@
+.book-form {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px 0;
+}
+
+.book-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.authors-field {
+  grid-column: 1 / 3;
+}
+
+.book-form__field label {
+  display: block;
+}
+.add-author {
+  float: right;
+}
+
+.book-form__authors-list {
+  width: 100%;
+  display: flex;
+  gap: 8px 10px;
+  flex-wrap: wrap;
+}
+
+.book-form__authors-list-item {
+  background-color: seagreen;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 25px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.book-form__authors-list-item button {
+  margin-left: 7px;
+  color: #fff;
+}
+
+.book-form__buttons {
+  grid-column: 1 / 3;
+}
+
+.book-form__buttons button {
+  float: right;
+}
+
+.book-form__buttons-submit {
+  margin-right: 10px;
+}
+
+.book-form__field.error label{
+  color: red;
+}
+
+.book-form__field.error .std-input-wrap {
+  border-color: red;
+}
