@@ -4,6 +4,14 @@
   margin: 30px 0;
 }
 
+.book-form__title {
+  margin-block-end: 20px;
+}
+
+.book-form__title i {
+  font-size: 25px;
+}
+
 .book-form form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -18,7 +26,9 @@
   display: block;
 }
 .add-author {
-  float: right;
+  border: none;
+  border-radius: 4px;
+  background: none;
 }
 
 .book-form__authors-list {
@@ -26,10 +36,12 @@
   display: flex;
   gap: 8px 10px;
   flex-wrap: wrap;
+  margin: 8px 0;
 }
 
 .book-form__authors-list-item {
   background-color: seagreen;
+  border: none;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -54,7 +66,7 @@
 }
 
 .book-form__buttons-submit {
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 
 .book-form__field.error label{

@@ -19,7 +19,9 @@ h3 {
 .std-input-wrap {
   border: 1px solid lightgray;
   border-radius: 4px;
-  padding: 5px 8px;
+  display: flex;
+  padding-left: 10px;
+  height: 36px;
 }
 
 input {

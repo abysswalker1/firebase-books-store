@@ -1,6 +1,6 @@
 import {getDocs, addDoc, updateDoc, deleteDoc, doc, Firestore, CollectionReference, DocumentData} from 'firebase/firestore';
 import { booksCollectionRef } from '../firebase-config';
-import { BookType } from '../types';
+import { BookType } from '../store/booksList';
 
 interface IBookEntities {
   name?: string

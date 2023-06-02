@@ -1,0 +1,7 @@
+.rating-stars {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  color: darkorange;
+  column-gap: 3px;
+}

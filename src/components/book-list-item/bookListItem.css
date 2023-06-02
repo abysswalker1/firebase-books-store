@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
-  width: 33%;
-  max-width: 320px;
+  width: calc(100% / 3 - 10px);
   box-shadow: 0 0 1px #000;
   border-radius: 4px;
+  position: relative;
 }
 
 .book-list-item__image-wrap {
   width: 100%;
   height: 250px;
+  background-color: lightblue;
 }
 
 .book-list-item__info {
@@ -20,4 +20,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding: 0 15px;
+}
+
+.book-list-item__buttons {
+  position: absolute;
+  top: 10px;right: 10px;
+  display: none;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.book-list-item:hover .book-list-item__buttons {
+  display: flex;
+  transition: display 0.3s ease;
+}
+
+.book-list-item__buttons button {
+  cursor: pointer;
+  font-size: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+#delite-book {
+  color: red;
 }
