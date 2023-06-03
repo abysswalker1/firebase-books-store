@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
-import booksList from './booksList';
-import form from './form';
+import booksList from './booksListSlice';
+import form from './formSlice';
 
 export const store = configureStore({
   reducer: {

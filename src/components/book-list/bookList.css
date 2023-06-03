@@ -1,0 +1,8 @@
+.app__book-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 950px;
+}
+

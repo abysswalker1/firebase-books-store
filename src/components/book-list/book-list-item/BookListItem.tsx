@@ -1,11 +1,11 @@
 import React from 'react';
-import { BookType } from '../../store/booksList';
+import { BookType } from '../../../store/booksListSlice';
 import './bookListItem.css';
-import { booksApi, getBooks, toggleIsFetching } from '../../store/booksList';
-import { useStoreDispatch } from '../../store/store';
+import { booksApi, getBooks, toggleIsFetching } from '../../../store/booksListSlice';
+import { useStoreDispatch } from '../../../store/store';
 import { useDispatch } from 'react-redux';
-import { setDocId } from '../../store/form';
-import RatingStars from '../common/rating-stars/RatingStars';
+import { setDocId } from '../../../store/formSlice';
+import RatingStars from '../../common/rating-stars/RatingStars';
 
 type Props = {
   book: BookType 

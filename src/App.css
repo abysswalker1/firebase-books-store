@@ -7,15 +7,6 @@
   flex-direction: column;
   align-items: center;
 }
-
-.app__book-list {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 950px;
-}
-
 .add-book-btn {
   margin: 30px 0 20px !important;
 }

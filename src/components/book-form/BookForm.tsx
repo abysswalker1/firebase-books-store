@@ -3,26 +3,31 @@ import {Form, Field, useFormState} from 'react-final-form';
 import './bookForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { addAuthor, removeAuthor, RequestDocumentData, clearAndCloseForm} from '../../store/form';
+import { addAuthor, removeAuthor, RequestDocumentData, clearAndCloseForm} from '../../store/formSlice';
 import { fireStoreBooksApi } from '../../api/fireStoreApi';
 import Select from 'react-select';
 import { useStoreDispatch } from '../../store/store';
-import { getBooks, toggleIsFetching, booksApi } from '../../store/booksList';
+import { getBooks, toggleIsFetching, booksApi } from '../../store/booksListSlice';
 import Button from '@mui/material/Button/Button';
 
 type Props = {
-  
+  options: number[]
 }
 
-const BookForm: React.FC<Props> = () => {
+const BookForm: React.FC<Props> = (props) => {
   const storeDispatch = useStoreDispatch();
   const dispatch = useDispatch();
   const currentDoc = useSelector((state: RootState) => state.form.currentDoc);
-  const currentDocId = useSelector((state: RootState) => state.form.currentDocId)
+  const currentDocId = useSelector((state: RootState) => state.form.currentDocId);
+  
+  const years = props.options.map(date => ({option: date, label: date + ''}))
 
   const validate = {
     reuired: (value: string) => value ? undefined : 'Заполните поле',
-    needOneAtLeast: () => {}  
+    needOneAtLeast: () => {},
+    validateSelect: (value : string) => {
+      return !value || value.length === 0 ? 'Please select a value' : undefined;
+    }
   }
 
   const onSubmit = (values: RequestDocumentData) => {
@@ -43,11 +48,6 @@ const BookForm: React.FC<Props> = () => {
     }
     
   }
-
-  const years = [
-    {value: 2023, label: "2023"},
-    {value: 1800, label: "1800"}
-  ]
 
   //@ts-ignore
   const ReactSelectAdapter = ({ input, ...rest }) => (
@@ -74,10 +74,11 @@ const BookForm: React.FC<Props> = () => {
       </h1>
       <Form 
         onSubmit={onSubmit}
+        initialValues={{name: currentDoc.name}}
         render={
           ({handleSubmit, values}) => (
           <form action="">
-            <Field name='name' validate={validate.reuired} initialValue={currentDoc.name}>
+            <Field name='name' validate={validate.reuired}>
               {({input, meta}) => (
                 <div className={`book-form__field ${(meta.error && meta.touched) ? 'error' : ''}`}>
                   <label htmlFor="name">{(meta.error && meta.touched) ? <>{meta.error}</> : <>Название</>}</label>
@@ -87,17 +88,19 @@ const BookForm: React.FC<Props> = () => {
                 </div>
               )}
             </Field>
-              
-            <div className="book-form__field">
-              <label htmlFor="name">Год</label>
-              
-              <Field
-                name="date"
-                component={ReactSelectAdapter}
-                options={years}
-              />
-              
-            </div>
+
+            <Field
+              name="date"
+              component='input'
+              validate={validate.validateSelect}
+            >
+              {({meta, input}) => ( 
+                <div className={`book-form__field ${(meta.error && meta.touched) ? 'error' : ''}`}>
+                    <label htmlFor="name">{meta.error && meta.touched ? <span>{meta.error}</span> : <span>Год</span>}</label>
+                    <ReactSelectAdapter input={input} options={years} />
+                  </div>
+                )}
+            </Field>
 
             <Field name='authors' validate={validate.needOneAtLeast}>
               {({input, meta}) => (
