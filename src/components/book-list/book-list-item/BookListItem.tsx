@@ -20,7 +20,6 @@ const BookListItem: React.FC<Props> = ({ book, ...props }) => {
   }
 
   const deliteBook = () => {
-    //@ts-ignore
     booksApi.delete(book.id);
     storeDispatch(getBooks());
   }

@@ -13,9 +13,9 @@ export const getRecomended = (books: BookType[]) => {
     return prevRating
   }, 0)
 
-  let bestBooks = 
-    books.filter(book => book.date && book.date <= year - 3)
-         .filter(book => book.rating && book.rating === highestRating);
+  let bestBooks = books.filter(book => book.date && (book.date <= year - 3 && book.rating == highestRating))
+  let randomIndex = Math.floor(Math.random() * bestBooks.length)
+  let neededBook =  bestBooks[randomIndex];
 
-  return [bestBooks[0]];
+  return neededBook
 };

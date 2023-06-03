@@ -1,7 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import { RootState } from './store';
-import { fireStoreBooksApi } from '../api/fireStoreApi';
-import { useSelector } from 'react-redux';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 
 export interface RequestDocumentData {
   name: string
